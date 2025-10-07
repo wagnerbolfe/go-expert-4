@@ -1,19 +1,14 @@
 package entity
 
-import (
-	"crypto/rand"
-	"time"
+import "github.com/google/uuid"
 
-	"github.com/oklog/ulid/v2"
-)
-
-type ID = ulid.ULID
+type ID = uuid.UUID
 
 func NewID() ID {
-	return ID(ulid.MustNew(ulid.Timestamp(time.Now()), rand.Reader))
+	return ID(uuid.New())
 }
 
 func ParseID(s string) (ID, error) {
-	id, err := ulid.Parse(s)
+	id, err := uuid.Parse(s)
 	return ID(id), err
 }
