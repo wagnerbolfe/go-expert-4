@@ -1,10 +1,20 @@
-### GET request to example server
+### POST Product
 POST http://localhost:8000/products
 Content-Type: application/json
 
 {
-  "name": "Produto 01",
-  "price": 100
+  "name": "Produto 02",
+  "price": 200
 }
 
-###
+### GET Product by Id
+GET http://localhost:8000/products/80a46a02-8ead-4f59-a985-239a15b4b462
+
+### PUT Product by Id
+PUT http://localhost:8000/products/80a46a02-8ead-4f59-a985-239a15b4b462
+Content-Type: application/json
+
+{
+  "name": "Produto 04",
+  "price": 250
+}

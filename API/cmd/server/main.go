@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/wagnerbolfe/goexpert/API/configs"
 	"github.com/wagnerbolfe/goexpert/API/internal/entity"
 	"github.com/wagnerbolfe/goexpert/API/internal/infra/database"
@@ -27,9 +29,13 @@ func main() {
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
 
-	http.HandleFunc("/products", productHandler.CreateProduct)
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+	r.Post("/products", productHandler.CreateProduct)
+	r.Get("/products/{id}", productHandler.GetProduct)
+	r.Put("/products/{id}", productHandler.UpdateProduct)
 
-	err = http.ListenAndServe(":8000", nil)
+	err = http.ListenAndServe(":8000", r)
 	if err != nil {
 		return
 	}
