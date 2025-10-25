@@ -7,8 +7,11 @@ Content-Type: application/json
   "price": 200
 }
 
+### GET Products
+GET http://localhost:8000/products
+
 ### GET Product by Id
-GET http://localhost:8000/products/80a46a02-8ead-4f59-a985-239a15b4b462
+GET http://localhost:8000/products/9044dc94-ed0b-4c54-8835-419a36b3641b
 
 ### PUT Product by Id
 PUT http://localhost:8000/products/80a46a02-8ead-4f59-a985-239a15b4b462
@@ -18,3 +21,6 @@ Content-Type: application/json
   "name": "Produto 04",
   "price": 250
 }
+
+### DELETE
+DELETE http://localhost:8000/products/9044dc94-ed0b-4c54-8835-419a36b3641b
